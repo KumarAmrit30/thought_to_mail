@@ -56,7 +56,7 @@ def format_thought_email(original_text: str, corrected_text: str) -> tuple[str, 
         tuple[str, str]: Email subject and body
     """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    subject = f"Captured Thought – {timestamp}"
+    subject = f"Captured Thought - {timestamp}"
     
     body = f"""Your captured thought has been processed and is ready for safekeeping!
 
