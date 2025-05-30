@@ -2,5 +2,4 @@ python-telegram-bot==22.1
 pytesseract==0.3.10
 Pillow==10.2.0
 openai==1.12.0
-python-dotenv==1.0.1 
-google-cloud-vision
+python-dotenv==1.0.1
