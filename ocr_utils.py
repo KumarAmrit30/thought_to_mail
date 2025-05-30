@@ -2,6 +2,12 @@ import os
 import logging
 from google.cloud import vision
 
+# Write the Google credentials JSON from env variable to a file (for Railway/cloud deployment)
+if os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON"):
+    with open("google-vision-key.json", "w") as f:
+        f.write(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google-vision-key.json"
+
 logger = logging.getLogger(__name__)
 
 def extract_text_from_image(image_path: str) -> str:
@@ -15,9 +21,6 @@ def extract_text_from_image(image_path: str) -> str:
         str: Extracted text from the image
     """
     try:
-        # Set the environment variable for authentication
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google-vision-key.json"
-
         client = vision.ImageAnnotatorClient()
         with open(image_path, "rb") as image_file:
             content = image_file.read()
